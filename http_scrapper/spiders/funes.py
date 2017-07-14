@@ -12,13 +12,16 @@ def formatLink(link):
 
 class FunesSpider(CrawlSpider):
     name = 'funes'
-#     domain = 'funes.uniandes.edu.co'
-#     allowed_domains = [domain]
-#     start_urls = ['http://' + domain + '/']
+    allowed_domains = []
+    handle_httpstatus_all = True
     rules = [Rule(LxmlLinkExtractor(allow=(),  process_value = formatLink), 'parse_items', follow =True)]
     
+    def __init__(self, *args, **kwargs):
+        super(FunesSpider, self).__init__(*args, **kwargs)
+        self.allowed_domains.append(self.domain)
+
     def start_requests(self):
-        yield Request(url=self.user_input)
+        yield Request(url= 'http://' + self.domain + '/')
     
     def parse_items(self, response):
         item = HttpScrapperItem()
