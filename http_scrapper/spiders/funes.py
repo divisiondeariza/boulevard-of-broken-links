@@ -16,8 +16,13 @@ class FunesSpider(CrawlSpider):
     handle_httpstatus_all = True
     rules = [Rule(LxmlLinkExtractor(allow=(),  process_value = formatLink), 'parse_items', follow =True)]
     
+#     customs_settings = {
+#       'FEED_URI' : '%(domain).csv'
+#      }
+#     
     def __init__(self, *args, **kwargs):
         super(FunesSpider, self).__init__(*args, **kwargs)
+#         self.domain = kwargs.pop("domain","")
         self.allowed_domains.append(self.domain)
 
     def start_requests(self):

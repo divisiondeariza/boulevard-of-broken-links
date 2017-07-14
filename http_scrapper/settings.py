@@ -88,4 +88,7 @@ CONCURRENT_REQUESTS = 32
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+#own
 HTTPERROR_ALLOW_ALL = True
+LOG_LEVEL = "INFO"
